@@ -333,10 +333,11 @@ app.post('/doVote/:id',(req, res) => {
         data.filter((meeting) => {
             if(meeting.id == req.params.id){
                 if(meeting.votes === ''){
+                    console.log("empty/new vote");
                     meeting.votes = [req.body.rating];
                 }
                 else {
-
+                    console.log("meeting.votes is not empty: '" + meeting.votes+"'");
                     meeting.votes = JSON.parse(meeting.votes)
                     meeting.votes.push(req.body.rating);
                 }
