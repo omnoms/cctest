@@ -1,0 +1,24 @@
+{
+  "name": "mymeetings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "6.6.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "tedious": "^1.14.0",         
+    "express-session": "*",       
+    "passport": "~0.3.2",         
+    "passport-azure-ad": "~1.4.4"
+  }
+}
