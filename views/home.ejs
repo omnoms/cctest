@@ -1,0 +1,179 @@
+<!-- home.ejs 
+
+Template for the homepage
+
+-->
+
+<!DOCTYPE html>
+<html lang="se">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mina möten</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div class="modal fade" id="newMeetingModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Nytt Möte</h4>
+        </div>
+        <div class="modal-body">
+            <form action="/" method="post"> 
+            <div class="form-group">
+                <label for="exampleInputEmail1">Titel</label>
+                <input type="titel" class="form-control" id="titel" name="titel" placeholder="titel" Required>
+            </div>
+            <div class="form-group">
+                <label for="date">Datum</label>
+                <input type="date" class="form-control" name="date" id="date" Required>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+            <span id="errorMessage" style="color: red; font-size:1.2em"></span>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
+            <button type="button" type="submit" class="btn btn-success" id="saveButton">Spara</button>
+            </form>
+        </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Navigation -->
+    <%- include('partials/navbar') %>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true" style="font-size: 10em; color: #337ab7"></span>
+                <h1><%= user.displayName %></h1>
+                <h1>Mina möten</h1>
+                <p class="lead">Här ser du statistik över dina tidigare möten.</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Senaste mötet</h3>
+                        </div>
+                        <div class="panel-body" style="height: 150px;">
+                            <!-- Body of first box -->
+                        </div>
+                        </div>                        
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Trend</h3>
+                        </div>
+                        <div class="panel-body" style="height: 150px;">
+                            <!-- Body of second box -->
+                        </div>
+                        </div>                           
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Totalt</h3>
+                        </div>
+                        <div class="panel-body" style="height: 150px;">
+                            <!-- Body of last box -->
+                        </div>
+                        </div>                           
+                    </div>
+                </div>
+                <h2>Registrera ett nytt möte.</h2>
+                <p class="lead"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#newMeetingModal"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Nytt möte!</button></p>
+
+                <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Kommande möten</div>
+
+                <!-- Uppcomming Table -->
+                <table class="table">
+                    <thead>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Titel
+                        </th>
+                        <th>
+                            Datum
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <!-- Do for each meeting in the meeting array -->
+                        <% for(var i = 0; i<meetings.length;i++){ %>
+                        <tr>
+                        <td>
+                            <%= meetings[i].id %>
+                        </td>
+                        <td>
+                            <%= meetings[i].title %>
+                        </td>
+                        <td>
+                            <%= meetings[i].date %>
+                        </td>
+                        <td>
+                            <a href="/vote/<%= meetings[i].id %>">Betyg Länk</a>
+                        </td>
+                        <td>
+                            <a href="/details/<%= meetings[i].id %>">Detaljer</a>
+                        </td>
+                        </tr>
+                        <% }%>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+    <script src="js/home.js"></script>
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
