@@ -344,9 +344,11 @@ app.post('/doVote/:id',(req, res) => {
                 
                 if(req.body.comment != ''){
                     if(meeting.comments === ''){
+                        console.log("empty/new comment");
                         meeting.comments = [req.body.comment];
                     }
                     else {
+                    console.log("meeting.comments is not empty: '" + meeting.comments+"'");
                         meeting.comments = JSON.parse(meeting.comments);
                         meeting.comments.push(req.body.comment);
                     }
