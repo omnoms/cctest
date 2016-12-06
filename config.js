@@ -1,10 +1,10 @@
- exports.creds = {
- 	returnURL: 'https://XXXXX/auth/openid/return', //Configured in the Azure auth portal
- 	identityMetadata: 'https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/.well-known/openid-configuration', // Add the tender GUID
- 	clientID: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', //Application ID from Azure auth portal
- 	skipUserProfile: true, // for AzureAD should be set to true.
- 	responseType: 'id_token', // for login only flows use id_token. For accessing resources use `id_token code`
- 	responseMode: 'form_post' // For login only flows we should have token passed back to us in a POST
+exports.creds = { 
+  returnURL: 'https://ccmvwebapp.azurewebsites.net/auth/openid/return', 
+  identityMetadata: 'https://login.microsoftonline.com/6be76997-78c9-44ad-8ccc-949dcc44ba4b/.well-known/openid-configuration', 
+  clientID: '7eaf21e4-242c-4422-9d4e-c464ce509711', 
+  skipUserProfile: true, 
+  responseType: 'id_token', 
+  responseMode: 'form_post' 
  };
 
   exports.db = {
