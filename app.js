@@ -157,8 +157,8 @@ function getMeetings(user,fn){
                 title: columns[2].value,
                 rating: columns[3].value,
                 numVotes: columns[4].value,
-                votes: columns[5].value,
-                comments: columns[6].value
+                votes: JSON.parse(columns[5].value),
+                comments: JSON.parse(columns[6].value)
                 }
             dataSet.push(meeting);
     });
