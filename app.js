@@ -120,7 +120,7 @@ var TYPES = require('tedious').TYPES;
 function regMeeting(user,meeting, fn){
     request = new Request("INSERT INTO [dbo].[meetings]" +
            "([date],[title],[rating],[numvotes],[votes],[comments],[userid])" +
-            "VALUES ('"+meeting.date+"','"+meeting.title+"',"+meeting.rating+","+meeting.numVotes+",'"+JSON.stringify(meeting.votes)+"','"+JSON.stringify(meeting.comments)+"','"+user.id+"')", function(err) {  
+            "VALUES ('"+meeting.date+"','"+meeting.title+"',"+meeting.rating+","+meeting.numVotes+",'"+meeting.votes+"','"+meeting.comments+"','"+user.id+"')", function(err) {  
     if (err) {  
         console.log(err);  
     }else {
